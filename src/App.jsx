@@ -5,6 +5,7 @@ import FormLogin from './FormLogin';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Admin from './AdminPage';
+import Summary from './Summary';
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
         <Route
           path="/admin"
           element={<Admin />}
+        />
+        <Route
+          path="/summary"
+          element={<Summary />}
         />
       </Routes>
     </Router>
