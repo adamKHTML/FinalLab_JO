@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Summary from './Components/Summary';
 import Header from './Components/Header';
 
+import CarouselFadeExample from './Components/Carousel';
+
 const Dashboard = () => {
     return (
         <>
@@ -11,16 +13,17 @@ const Dashboard = () => {
 
             <Header />
             <DashboardContainer>
+                <CarouselFadeExample />
 
-                <div>
-                    <Summary />
-                    <Link to="/formulaire" style={{ textDecoration: 'none', color: 'inherit' }}>
 
-                        <button type="button" className="btn btn-dark">
-                            Connexion
-                        </button>
-                    </Link>
-                </div>
+                <Summary />
+                <Link to="/formulaire" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                    <button type="button" className="btn btn-dark">
+                        Connexion
+                    </button>
+                </Link>
+
             </DashboardContainer>
         </>
     )

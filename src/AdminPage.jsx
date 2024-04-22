@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FIREBASE_AUTH } from './firebaseConfig'
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 
 const Admin = () => {
@@ -26,6 +26,12 @@ const Admin = () => {
             <h1>Welcome Administrator</h1>
 
             <button onClick={handleLogout}>Logout</button>
+            <Link to="/content">
+                <button type="button" className="btn btn-dark">
+                    Content
+                </button>
+            </Link>
+
 
         </>
     );

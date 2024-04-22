@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Admin from './AdminPage';
 import Summary from './Components/Summary';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import FormContent from './Components/FormContent';
 
 function App() {
 
@@ -28,6 +30,10 @@ function App() {
         <Route
           path="/summary"
           element={<Summary />}
+        />
+        <Route
+          path="/content"
+          element={<FormContent />}
         />
       </Routes>
     </Router>
