@@ -67,10 +67,14 @@ const PingPongForm = () => {
             // Récupère l'URL de téléchargement du fichier
             const imageUrl = await getDownloadURL(snapshot.ref);
 
+            // Met à jour l'état de 'image' avec l'URL de l'image téléchargée
+            setImage(imageUrl);
+
             // Ajoute l'URL de l'image au document Firestore
             await addDoc(collection(db, 'Players'), {
                 image: imageUrl
             });
+
 
             console.log("Image téléchargée avec succès :", imageUrl);
         } catch (error) {
