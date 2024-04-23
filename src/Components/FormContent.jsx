@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { collection, addDoc, doc } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+import { db, storage } from '../firebaseConfig';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const PingPongForm = () => {
     const [firstName, setFirstName] = React.useState('');
@@ -13,8 +17,14 @@ const PingPongForm = () => {
     const [style, setStyle] = React.useState('');
     const [country, setCountry] = React.useState(null); // Changer le type de l'état à 'null'
     const [value, setValue] = React.useState('');
+    const [image, setImage] = React.useState(null);
+    const navigate = useNavigate();
+
+
+
 
     const options = countryList().getData();
+
 
     const sendPlayer = async () => {
         console.log("Button clicked, sending player...");
@@ -26,11 +36,45 @@ const PingPongForm = () => {
                 description,
                 ranking: parseInt(ranking),
                 style,
-                country: country ? country.label : ''
+                country: country ? country.label : '',
+                image: image ? image : "No picture :(",
             });
             console.log("Document added with ID: ", docRef.id);
+            window.location.reload();   // Refresh the page
+            // navigate('/content');
+
         } catch (error) {
             console.error('Error adding document: ', error);
+        }
+    };
+
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+
+        // Vérifiez si un fichier est sélectionné
+        if (!file) {
+            console.error('Aucun fichier sélectionné.');
+            return;
+        }
+
+        try {
+            // Crée une référence pour le fichier dans le stockage Firebase
+            const storageRef = ref(storage, `images/${file.name}`);
+
+            // Télécharge le fichier dans le stockage Firebase
+            const snapshot = await uploadBytesResumable(storageRef, file);
+
+            // Récupère l'URL de téléchargement du fichier
+            const imageUrl = await getDownloadURL(snapshot.ref);
+
+            // Ajoute l'URL de l'image au document Firestore
+            await addDoc(collection(db, 'Players'), {
+                image: imageUrl
+            });
+
+            console.log("Image téléchargée avec succès :", imageUrl);
+        } catch (error) {
+            console.error('Erreur lors du téléchargement de l\'image :', error);
         }
     };
 
@@ -56,6 +100,7 @@ const PingPongForm = () => {
                 <option value="Droitier">Droitier</option>
             </select>
             <Select options={options} value={value} onChange={changeHandler} />
+            <input type="file" onChange={handleImageUpload} />
             <button onClick={sendPlayer}>Add Player</button>
         </div>
     );

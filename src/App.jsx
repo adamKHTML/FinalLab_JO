@@ -8,6 +8,7 @@ import Admin from './AdminPage';
 import Summary from './Components/Summary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FormContent from './Components/FormContent';
+import PlayerList from './Components/PlayerList';
 
 function App() {
 
@@ -34,6 +35,10 @@ function App() {
         <Route
           path="/content"
           element={<FormContent />}
+        />
+        <Route
+          path="/playersList"
+          element={<PlayerList />}
         />
       </Routes>
     </Router>

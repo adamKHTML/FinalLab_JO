@@ -31,6 +31,11 @@ const Admin = () => {
                     Content
                 </button>
             </Link>
+            <Link to="/playersList">
+                <button type="button" className="btn btn-dark">
+                    Players
+                </button>
+            </Link>
 
 
         </>
