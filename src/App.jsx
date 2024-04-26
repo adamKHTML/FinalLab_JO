@@ -8,7 +8,7 @@ import Admin from './AdminPage';
 import Summary from './Components/Summary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FormContent from './Components/FormContent';
-import PlayerList from './Components/PlayerList';
+import PlayerList from './PlayerList';
 import UpdateContent from './Components/UpdateContent';
 
 function App() {
@@ -26,10 +26,6 @@ function App() {
         />
 
         <Route
-          path="/admin"
-          element={<Admin />}
-        />
-        <Route
           path="/summary"
           element={<Summary />}
         />
@@ -38,7 +34,7 @@ function App() {
           element={<FormContent />}
         />
         <Route
-          path="/playersList"
+          path="/admin"
           element={<PlayerList />}
         />
         <Route

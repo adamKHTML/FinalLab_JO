@@ -1,8 +1,10 @@
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+import { db } from './firebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import NavBar from './Components/NavBar';
+import { Link } from 'react-router-dom';
 
 
 const PlayerList = () => {
@@ -42,7 +44,15 @@ const PlayerList = () => {
 
     return (
         <PlayerListContainer>
-            <h1>Player List</h1>
+            <NavBar />
+            <h1>Welcome Administrator</h1>
+            <Link to="/content">
+                <button type="button" className="btn btn-dark">
+                    Content
+                </button>
+            </Link>
+
+            <h2>Player List</h2>
             <ul>
                 {players.map((player) => (
                     <PlayerItem key={player.id}>
