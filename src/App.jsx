@@ -9,6 +9,7 @@ import Summary from './Components/Summary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FormContent from './Components/FormContent';
 import PlayerList from './Components/PlayerList';
+import UpdateContent from './Components/UpdateContent';
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
         <Route
           path="/playersList"
           element={<PlayerList />}
+        />
+        <Route
+          path="/update/:id"
+          element={<UpdateContent />}
         />
       </Routes>
     </Router>

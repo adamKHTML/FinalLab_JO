@@ -2,6 +2,7 @@ import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 
 const PlayerList = () => {
@@ -31,8 +32,8 @@ const PlayerList = () => {
         }
     };
 
-    const handleEdit = (player) => {
-        navigate('/edit-player', { state: { player } });
+    const handleEdit = (id) => {
+        navigate(`/update/${id}`);
     };
 
     useEffect(() => {
@@ -40,28 +41,68 @@ const PlayerList = () => {
     }, []);
 
     return (
-        <div>
+        <PlayerListContainer>
             <h1>Player List</h1>
             <ul>
                 {players.map((player) => (
-                    <li key={player.id}>
+                    <PlayerItem key={player.id}>
+                        <PlayerInfo>
+                            <PlayerImage src={player.image} alt={`${player.firstName} ${player.lastName}`} />
+                            <p><strong>Name:</strong> {player.firstName} {player.lastName}</p>
+                            <p><strong>Age:</strong> {player.age}</p>
+                            <p><strong>Description:</strong> {player.description}</p>
+                            <p><strong>Ranking:</strong> {player.ranking}</p>
+                            <p><strong>Style:</strong> {player.style}</p>
+                            <p><strong>Country:</strong> {player.country}</p>
+                        </PlayerInfo>
                         <div>
-                            <p>Name: {player.firstName} {player.lastName}</p>
-                            <p>Age: {player.age}</p>
-                            <p>Description: {player.description}</p>
-                            <p>Ranking: {player.ranking}</p>
-                            <p>Style: {player.style}</p>
-                            <p>Country: {player.country}</p>
+                            <Button onClick={() => handleDelete(player.id)}>Delete</Button>
+                            <Button onClick={() => handleEdit(player.id)}>Edit</Button>
                         </div>
-                        <div>
-                            <button onClick={() => handleDelete(player.id)}>Delete</button>
-                            <button onClick={() => handleEdit(player)}>Edit</button>
-                        </div>
-                    </li>
+                    </PlayerItem>
                 ))}
             </ul>
-        </div>
+        </PlayerListContainer>
     );
 };
 
+
 export default PlayerList;
+
+const PlayerListContainer = styled.div`
+    padding: 20px;
+`;
+
+const PlayerItem = styled.li`
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const PlayerInfo = styled.div`
+    flex-grow: 1;
+`;
+
+const PlayerImage = styled.img`
+    width: 100px; // Largeur fixe
+    height: 100px; // Hauteur fixe
+    border-radius: 24%; // Conserver l'arrondi
+    margin-right: 20px;
+    object-fit: cover; // Conserver les proportions sans déformation
+`;
+
+const Button = styled.button`
+    background-color: ${(props) => props.color || '#6f5cc3'};
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    &:hover {
+        background-color: ${(props) => props.hoverColor || 'violet'};
+    }
+`;

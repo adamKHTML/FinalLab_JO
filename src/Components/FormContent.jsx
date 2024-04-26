@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { collection, addDoc, doc } from 'firebase/firestore';
 import { db, storage } from '../firebaseConfig';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -8,22 +8,28 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
+
 const PingPongForm = () => {
+
+
     const [firstName, setFirstName] = React.useState('');
     const [lastName, setLastName] = React.useState('');
     const [age, setAge] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [ranking, setRanking] = React.useState('');
     const [style, setStyle] = React.useState('');
-    const [country, setCountry] = React.useState(null); // Changer le type de l'état à 'null'
-    const [value, setValue] = React.useState('');
+    const [country, setCountry] = React.useState(null);
     const [image, setImage] = React.useState(null);
+    const [value, setValue] = React.useState('');
     const navigate = useNavigate();
 
 
 
 
     const options = countryList().getData();
+
+
 
 
     const sendPlayer = async () => {
@@ -40,13 +46,14 @@ const PingPongForm = () => {
                 image: image ? image : "No picture :(",
             });
             console.log("Document added with ID: ", docRef.id);
-            window.location.reload();   // Refresh the page
-            // navigate('/content');
+            window.location.reload();
+            navigate('/content');
 
         } catch (error) {
             console.error('Error adding document: ', error);
         }
     };
+
 
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
@@ -92,6 +99,7 @@ const PingPongForm = () => {
     };
 
     return (
+
         <div>
             <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
@@ -105,7 +113,7 @@ const PingPongForm = () => {
             </select>
             <Select options={options} value={value} onChange={changeHandler} />
             <input type="file" onChange={handleImageUpload} />
-            <button onClick={sendPlayer}>Add Player</button>
+            <button onClick={sendPlayer}>Submit</button>
         </div>
     );
 };
