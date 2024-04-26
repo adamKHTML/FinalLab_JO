@@ -4,7 +4,6 @@ import Dashboard from './Dashboard';
 import FormLogin from './FormLogin';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
-import Admin from './AdminPage';
 import Summary from './Components/Summary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FormContent from './Components/FormContent';

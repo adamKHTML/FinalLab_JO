@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NavBar from './Components/NavBar';
 import { Link } from 'react-router-dom';
+import { Table, Button } from 'react-bootstrap';
 
 
 const PlayerList = () => {
@@ -46,32 +47,47 @@ const PlayerList = () => {
         <PlayerListContainer>
             <NavBar />
             <h1>Welcome Administrator</h1>
-            <Link to="/content">
-                <button type="button" className="btn btn-dark">
-                    Content
-                </button>
-            </Link>
+
 
             <h2>Player List</h2>
-            <ul>
-                {players.map((player) => (
-                    <PlayerItem key={player.id}>
-                        <PlayerInfo>
-                            <PlayerImage src={player.image} alt={`${player.firstName} ${player.lastName}`} />
-                            <p><strong>Name:</strong> {player.firstName} {player.lastName}</p>
-                            <p><strong>Age:</strong> {player.age}</p>
-                            <p><strong>Description:</strong> {player.description}</p>
-                            <p><strong>Ranking:</strong> {player.ranking}</p>
-                            <p><strong>Style:</strong> {player.style}</p>
-                            <p><strong>Country:</strong> {player.country}</p>
-                        </PlayerInfo>
-                        <div>
-                            <Button onClick={() => handleDelete(player.id)}>Delete</Button>
-                            <Button onClick={() => handleEdit(player.id)}>Edit</Button>
-                        </div>
-                    </PlayerItem>
-                ))}
-            </ul>
+            <Link to="/content">
+                <button type="button" className="btn btn-dark">
+                    Ajouter
+                </button>
+            </Link>
+            <StyledTable striped bordered hover> {/* Utiliser le composant Table de React Bootstrap */}
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Description</th>
+                        <th>Ranking</th>
+                        <th>Style</th>
+                        <th>Country</th>
+                        <th>Action</th> {/* Ajouter une colonne pour les actions */}
+                    </tr>
+                </thead>
+                <tbody>
+                    {players.map((player) => (
+                        <tr key={player.id}>
+
+                            <td> <PlayerImage src={player.image} alt={`${player.firstName} ${player.lastName}`} /></td>
+                            <td>{player.firstName} {player.lastName}</td>
+                            <td>{player.age}</td>
+                            <td>{player.description}</td>
+                            <td>{player.ranking}</td>
+                            <td>{player.style}</td>
+                            <td>{player.country}</td>
+
+                            <td>
+                                <Boutton onClick={() => handleDelete(player.id)}>Delete</Boutton>
+                                <Boutton onClick={() => handleEdit(player.id)}>Edit</Boutton>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </StyledTable>
         </PlayerListContainer>
     );
 };
@@ -83,18 +99,16 @@ const PlayerListContainer = styled.div`
     padding: 20px;
 `;
 
-const PlayerItem = styled.li`
+const StyledTable = styled(Table)`
     margin-bottom: 20px;
-    padding: 20px;
+  
     border: 1px solid #ccc;
     border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
+   
+   
 `;
 
-const PlayerInfo = styled.div`
-    flex-grow: 1;
-`;
+
 
 const PlayerImage = styled.img`
     width: 100px; // Largeur fixe
@@ -104,7 +118,7 @@ const PlayerImage = styled.img`
     object-fit: cover; // Conserver les proportions sans déformation
 `;
 
-const Button = styled.button`
+const Boutton = styled.button`
     background-color: ${(props) => props.color || '#6f5cc3'};
     color: white;
     border: none;
