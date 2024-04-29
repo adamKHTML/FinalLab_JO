@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Link } from 'react-router-dom';
 import Summary from './Components/Summary';
@@ -7,29 +7,33 @@ import Carousel from './Components/Carousel';
 import TopPlayers from './Components/TopPlayers';
 
 const Dashboard = () => {
+
     const [imageUrl, setImageUrl] = useState('/img/Story.svg');
+    const [text, setText] = useState('');
 
     return (
         <>
-
             <GlobalStyle />
             <Video autoPlay muted loop id="bg-video" src="./video/PingPong.mp4" type="video/mp4" />
             <Header />
             <DashboardContainer>
                 <CarouselBackground imageUrl={imageUrl}>
-                    <Carousel />
+                    <Carousel imageUrl={imageUrl} setImageUrl={setImageUrl} text={text} setText={setText} />
                 </CarouselBackground>
-                <PlayersSection>
-                    <TopPlayers />
-                </PlayersSection>
-                <Summary />
+                <div className='Container'>
+                    <PlayersSection>
+                        <TopPlayers />
+                    </PlayersSection>
+
+
+                    <Summary />
+                </div>
                 <Link to="/formulaire" style={{ textDecoration: 'none', color: 'inherit' }}>
 
                     <button type="button" className="btn btn-dark">
                         Connexion
                     </button>
                 </Link>
-
             </DashboardContainer>
 
         </>
@@ -49,6 +53,7 @@ const GlobalStyle = createGlobalStyle`
     background-repeat: no-repeat;
     background-position: center;
     font-family: sans-serif;
+    
   }
 
 `;
@@ -73,7 +78,7 @@ const CarouselBackground = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/img/Story.svg');
+    background-image: ${({ imageUrl }) => `url(${imageUrl})`};
     background-size: cover;
     
 `;
