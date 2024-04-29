@@ -11,7 +11,7 @@ const Header = () => {
                         <a href="#" className="text-white">Instagram</a>
                         <a href="#" className="text-white">TikTok</a>
                     </SocialLinks>
-                    <div style={{ color: '#ffc617', fontSize: '2rem', fontFamily: 'Lunch time, sans-serif' }}>
+                    <div style={{ color: '#ffc617', fontSize: '2rem', fontFamily: 'Lunch time, sans-serif', textAlign: 'center' }}>
                         Ping Pong <br />Stories
                     </div>
                 </div>

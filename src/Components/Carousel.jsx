@@ -28,7 +28,7 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
 
             case '1901':
                 image = Story1;
-                newText = <p>
+                newText = <p  >
                     <span style={{ fontFamily: 'Lunch time' }}>1901</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}> John Jaques</span> dépose le nom "Ping-Pong" pour commercialiser des équipements.
                 </p>
                 break;
@@ -145,7 +145,15 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
         <div id="Timeline">
             <Title>Histoire</Title>
             <TextStyle>
-                <Text>{text}</Text>
+                <div style={{
+                    display: 'block',
+                    textAlign: 'center',
+                    marginLeft: '237px',
+                    backgroundColor: 'rgba(125, 125, 125, 0.4)',
+
+                }}>
+                    <Text>{text}</Text>
+                </div>
             </TextStyle>
             <SliderContainer>
                 <Slider>
@@ -380,13 +388,18 @@ const Slider = styled.div`
 
 `
 const TextStyle = styled.div`    
- display: block;
+    display: block;
+    text-align: end;
+    margin-right: 40px;
+    
+   
   
     
 `;
 
 const Text = styled.p`
-    font-size: 18px;
+        font-size: 29px;
+
     line-height: 1.5;
     color: white;
    
