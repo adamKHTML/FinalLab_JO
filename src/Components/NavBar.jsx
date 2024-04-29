@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Navbar, Container } from 'react-bootstrap';
 import { FIREBASE_AUTH } from '../firebaseConfig'
 import { useNavigate } from 'react-router-dom';
+import 'primeicons/primeicons.css';
+
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -42,12 +44,17 @@ const NavBar = () => {
 
     return (
         <CustomNavbar scrolled={scrolled ? 'true' : undefined} expand="lg" fixed="top">
-            <CustomContainer>
-                <CustomNavbarBrand scrolled={scrolled ? 'true' : undefined}>
+            <Container>
+                <Link to="/admin">
+                    <Navbar.Brand className={scrolled ? 'scrolled' : ''}>
+                        <i className="pi pi-home" style={{ color: 'white' }}></i>
 
-                </CustomNavbarBrand>
-                <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-            </CustomContainer>
+
+
+                    </Navbar.Brand>
+                </Link>
+                <LogoutButton onClick={handleLogout} className="logout-button">Logout</LogoutButton>
+            </Container>
         </CustomNavbar>
     );
 };
@@ -60,45 +67,8 @@ const CustomNavbar = styled(Navbar)`
 
 `;
 
-const CustomContainer = styled(Container)`
-  display: flex;
-  justify-content: space-between;
- 
-`;
 
-const CustomNavbarBrand = styled(Navbar.Brand)`
-  color: ${({ scrolled }) => (scrolled ? '#3f3a64' : '#e9e9e9')};
-  display: inline-block;
-  position: relative;
-  transition: color 0.3s ease-in-out;
 
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #EF476F;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-  }
-
-  &:hover {
-    color: #EF476F;
-  }
-
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
 
 const LogoutButton = styled.button`
   background-color: transparent;

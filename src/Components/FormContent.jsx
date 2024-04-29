@@ -5,8 +5,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import { useNavigate } from 'react-router-dom';
-
-
+import { Form, Button } from 'react-bootstrap';
+import styled from 'styled-components';
+import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 
 
@@ -99,23 +101,81 @@ const PingPongForm = () => {
     };
 
     return (
+        <>
 
-        <div>
-            <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-            <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-            <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
-            <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-            <input type="number" placeholder="Ranking" value={ranking} onChange={(e) => setRanking(e.target.value)} />
-            <select value={style} onChange={(e) => setStyle(e.target.value)}>
-                <option value="">Select Style</option>
-                <option value="Gaucher">Gaucher</option>
-                <option value="Droitier">Droitier</option>
-            </select>
-            <Select options={options} value={value} onChange={changeHandler} />
-            <input type="file" onChange={handleImageUpload} />
-            <button onClick={sendPlayer}>Submit</button>
-        </div>
+            <NavBar />
+
+            <StyledForm>
+                <StyledFormGroup>
+                    <StyledFormControl type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <StyledFormControl type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <StyledFormControl type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <Form.Group className="mb-3" >
+                        <Form.Control as="textarea" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    </Form.Group>
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <StyledFormControl type="number" placeholder="Ranking" value={ranking} onChange={(e) => setRanking(e.target.value)} />
+                </StyledFormGroup>
+
+                <Form.Select value={style} onChange={(e) => setStyle(e.target.value)}>
+                    <option value="">Select Style</option>
+                    <option value="Gaucher">Gaucher</option>
+                    <option value="Droitier">Droitier</option>
+                </Form.Select>
+
+
+
+                <StyledFormGroup>
+                    <Select options={options} value={value} onChange={changeHandler} />
+                </StyledFormGroup>
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Control type="file" onChange={handleImageUpload} />
+                </Form.Group>
+                <StyledFormGroup>
+                    <StyledButton onClick={sendPlayer}>Submit</StyledButton>
+                    <Link to="/admin" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                        <StyledButton style={{ marginTop: '15px' }} type="button">
+                            Annuler
+                        </StyledButton>
+                    </Link>
+
+                </StyledFormGroup>
+            </StyledForm>
+
+        </>
     );
 };
 
 export default PingPongForm;
+
+
+
+const StyledForm = styled(Form)`
+
+padding: 9px;
+    border-radius: 10px;
+    border-color: #000000;
+    margin-top: 60px;
+  
+`;
+
+const StyledFormGroup = styled(Form.Group)`
+  margin-bottom: 20px;
+`;
+
+const StyledFormControl = styled(Form.Control)`
+  
+  border: 1px solid ;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+`;

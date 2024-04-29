@@ -3,37 +3,46 @@ import styled from 'styled-components';
 
 const Header = () => {
     return (
-        <>
+        <HeaderContainer>
 
-            <div>
-                <Video autoPlay muted loop id="bg-video" src="./video/PingPong.mp4" type="video/mp4" />
-
-                <header className="bg-transparent py-4 px-6 flex items-center justify-between">
-                    <div className="link-btg">
-                        <div className="flex items-center space-x-4">
-                            <a href="#" className="text-white">Instagram</a>
-                            <a href="#" className="text-white">TikTok</a>
-                        </div>
+            <HeaderContent>
+                <div className="link-btg">
+                    <SocialLinks className="flex items-center space-x-4">
+                        <a href="#" className="text-white">Instagram</a>
+                        <a href="#" className="text-white">TikTok</a>
+                    </SocialLinks>
+                    <div style={{ color: '#ffc617', fontSize: '2rem', fontFamily: 'Lunch time, sans-serif' }}>
+                        Ping Pong <br />Stories
                     </div>
-                </header>
-
-            </div>
-
-
-
-        </>
+                </div>
+            </HeaderContent>
+        </HeaderContainer>
     )
 }
 
 export default Header
 
-const Video = styled.video`
+const HeaderContainer = styled.div`
+  position: relative;
+  transition: 0.3s ease-in-out;
+`;
+
+
+const HeaderContent = styled.header`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin-bottom: 400px;
+  padding: 1rem; 
+  box-sizing: border-box;
+  color: white;
+  z-index: 1; 
+ 
 `;
 
+const SocialLinks = styled.div`
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    font-family: 'Lunch time', sans-serif;
+`;

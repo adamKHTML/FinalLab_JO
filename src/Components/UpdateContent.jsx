@@ -5,6 +5,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import { useNavigate, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import NavBar from './NavBar';
+import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 const UpdateContent = () => {
     const { id } = useParams();
@@ -51,7 +56,7 @@ const UpdateContent = () => {
     const handleSubmit = async () => {
         try {
             await editPlayer();
-            navigate('/playersList');
+            navigate('/admin');
         } catch (error) {
             console.error('Error:', error);
         }
@@ -69,7 +74,7 @@ const UpdateContent = () => {
                 ranking: parseInt(player.ranking),
                 style: player.style,
                 // Vérifiez si country est défini avant de l'ajouter
-                country: player.country ? player.country.label : '',
+                country: player.country ? player.country : '',
                 image: player.image ? player.image : "No picture :(",
             };
 
@@ -110,22 +115,77 @@ const UpdateContent = () => {
     };
 
     return (
-        <div>
-            <input type="text" placeholder="First Name" value={player.firstName} onChange={(e) => setPlayer({ ...player, firstName: e.target.value })} />
-            <input type="text" placeholder="Last Name" value={player.lastName} onChange={(e) => setPlayer({ ...player, lastName: e.target.value })} />
-            <input type="number" placeholder="Age" value={player.age} onChange={(e) => setPlayer({ ...player, age: e.target.value })} />
-            <textarea placeholder="Description" value={player.description} onChange={(e) => setPlayer({ ...player, description: e.target.value })} />
-            <input type="number" placeholder="Ranking" value={player.ranking} onChange={(e) => setPlayer({ ...player, ranking: e.target.value })} />
-            <select value={player.style} onChange={(e) => setPlayer({ ...player, style: e.target.value })}>
-                <option value="">Select Style</option>
-                <option value="Gaucher">Gaucher</option>
-                <option value="Droitier">Droitier</option>
-            </select>
-            <Select options={countryList().getData()} value={player.country} onChange={changeHandler} />
-            <input type="file" onChange={handleImageUpload} />
-            <button onClick={handleSubmit}>Submit</button>
-        </div>
+
+        <>
+            <NavBar />
+
+            <StyledForm>
+                <StyledFormGroup>
+                    <StyledFormControl type="text" placeholder="First Name" value={player.firstName} onChange={(e) => setPlayer({ ...player, firstName: e.target.value })} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <StyledFormControl type="text" placeholder="Last Name" value={player.lastName} onChange={(e) => setPlayer({ ...player, lastName: e.target.value })} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <StyledFormControl type="number" placeholder="Age" value={player.age} onChange={(e) => setPlayer({ ...player, age: e.target.value })} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <Form.Group className="mb-3" >
+                        <Form.Control as="textarea" placeholder="Description" value={player.description} onChange={(e) => setPlayer({ ...player, description: e.target.value })} />
+                    </Form.Group>
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <StyledFormControl type="number" placeholder="Ranking" value={player.ranking} onChange={(e) => setPlayer({ ...player, ranking: e.target.value })} />
+                </StyledFormGroup>
+                <StyledFormGroup>
+                    <Form.Select value={player.style} onChange={(e) => setPlayer({ ...player, style: e.target.value })}>
+                        <option value="">Select Style</option>
+                        <option value="Gaucher">Gaucher</option>
+                        <option value="Droitier">Droitier</option>
+                    </Form.Select>
+                </StyledFormGroup>
+                <StyledForm>
+                    <Select options={countryList().getData()} value={player.country} onChange={changeHandler} />
+                </StyledForm>
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Control type="file" onChange={handleImageUpload} />
+                </Form.Group>
+                <StyledFormGroup>
+                    <StyledButton onClick={handleSubmit}>Submit</StyledButton>
+                    <Link to="/admin" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                        <StyledButton type="button" style={{ marginTop: '15px' }}>
+                            Annuler
+                        </StyledButton>
+                    </Link>
+                </StyledFormGroup>
+
+            </StyledForm>
+        </>
     );
 };
 
 export default UpdateContent;
+
+
+
+const StyledForm = styled(Form)`
+    padding: 9px;
+    border-radius: 10px;
+    border-color: #000000;
+    margin-top: 60px;
+`;
+
+const StyledFormGroup = styled(Form.Group)`
+  margin-bottom: 20px;
+`;
+
+const StyledFormControl = styled(Form.Control)`
+  
+  border: 1px solid ;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+`;
+

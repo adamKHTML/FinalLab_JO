@@ -46,15 +46,17 @@ const PlayerList = () => {
     return (
         <PlayerListContainer>
             <NavBar />
-            <h1>Welcome Administrator</h1>
 
+            <h1 style={{ marginTop: '8%' }}>Bienvenue, Cher Admin</h1>
 
-            <h2>Player List</h2>
-            <Link to="/content">
-                <button type="button" className="btn btn-dark">
-                    Ajouter
-                </button>
-            </Link>
+            <Section>
+                <h2>Liste des Pongistes</h2>
+                <Link to="/content">
+                    <button type="button" className="btn btn-dark">
+                        Ajouter
+                    </button>
+                </Link>
+            </Section>
             <StyledTable striped bordered hover> {/* Utiliser le composant Table de React Bootstrap */}
                 <thead>
                     <tr>
@@ -81,8 +83,10 @@ const PlayerList = () => {
                             <td>{player.country}</td>
 
                             <td>
-                                <Boutton onClick={() => handleDelete(player.id)}>Delete</Boutton>
-                                <Boutton onClick={() => handleEdit(player.id)}>Edit</Boutton>
+                                <div style={{ display: 'flex' }}>
+                                    <Boutton onClick={() => handleDelete(player.id)}>Delete</Boutton>
+                                    <Boutton onClick={() => handleEdit(player.id)}>Edit</Boutton>
+                                </div>
                             </td>
                         </tr>
                     ))}
@@ -94,6 +98,14 @@ const PlayerList = () => {
 
 
 export default PlayerList;
+
+const Section = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 90px 0 30px 0;
+    
+`;
 
 const PlayerListContainer = styled.div`
     padding: 20px;
