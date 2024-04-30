@@ -1,74 +1,188 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
 
-const TopPlayers = () => {
-    const [topPlayers, setTopPlayers] = useState([]);
+// Slide component
+const Slide = ({ slide, current, handleSlideClick }) => {
+    const { rank, name, age, handedness, nationality, description } = slide;
 
-    useEffect(() => {
-        const fetchTopPlayers = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'Players'));
-                const playersList = [];
-                querySnapshot.forEach((doc) => {
-                    playersList.push({ id: doc.id, ...doc.data() });
-                });
-                // Trier les joueurs par rang
-                playersList.sort((a, b) => a.ranking - b.ranking);
-                // Sélectionner les 5 premiers joueurs
-                const topFivePlayers = playersList.slice(0, 5);
-                setTopPlayers(topFivePlayers);
-            } catch (error) {
-                console.error('Error fetching top players: ', error);
-            }
-        };
+    let classNames = "slide";
 
-        fetchTopPlayers();
-    }, []);
+    if (current === slide.index) classNames += " slide--current";
 
     return (
-        <TopPlayersContainer>
-            {topPlayers.map((player) => (
-                <PlayerCard key={player.id}>
-                    <PlayerImage src={player.image} alt={`${player.firstName} ${player.lastName}`} />
-                    <PlayerInfo>
-                        <h3>{player.firstName} {player.lastName}</h3>
-                        <p><strong>Rank:</strong> {player.ranking}</p>
-                        <p><strong>Age:</strong> {player.age}</p>
-                        <p><strong>Description:</strong> {player.description}</p>
-                    </PlayerInfo>
-                </PlayerCard>
-            ))}
-        </TopPlayersContainer>
+        <SlideContainer
+            className={classNames}
+            onClick={() => handleSlideClick(slide.index)}
+        >
+            <SlideContent>
+                <TopPlayers>
+                    <Circle />
+                    <Content>
+                        <Rank>{rank}</Rank>
+                        <Info>
+                            <p>{name}</p>
+                            <p>{age}</p>
+                            <p>{handedness}</p>
+                            <p>{nationality}</p>
+                            <p>{description}</p>
+                        </Info>
+                    </Content>
+                </TopPlayers>
+            </SlideContent>
+        </SlideContainer>
     );
 };
 
-export default TopPlayers;
+// Slider component
+const Slider = ({ slides, heading }) => {
+    const [current, setCurrent] = React.useState(0);
 
-const TopPlayersContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 400px;
+    const handleSlideClick = index => {
+        if (current !== index) {
+            setCurrent(index);
+        }
+    };
+
+    return (
+
+        <SliderContainer>
+            <SliderWrapper>
+                <h3 className="visuallyhidden" id="slider-heading">{heading}</h3>
+                {slides.map(slide => (
+                    <Slide
+                        key={slide.index}
+                        slide={slide}
+                        current={current}
+                        handleSlideClick={handleSlideClick}
+                    />
+                ))}
+            </SliderWrapper>
+        </SliderContainer>
+    );
+};
+
+// Style components
+const SliderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const PlayerCard = styled.div`
+const SliderWrapper = styled.ul`
+  display: flex;
+  position: relative;
+`;
+
+const SlideContainer = styled.li`
+  cursor: pointer;
+  flex: 1;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+
+  &.slide--current {
+    opacity: 1;
+  }
+`;
+
+const SlideContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+`;
+
+const Rank = styled.div`
+  background-color: #000000;
+  border-radius: 25px;
+  height: 58px;
+  width: 115px;
+`;
+
+const Info = styled.div`
+  border-radius: 25px;
+  background: linear-gradient(to right, #da1540, #341269);
+  height: 88px;
+  width: 170px;
+  font-size: 12px;
+`;
+const Circle = styled.div`
+    
+   
+    background-color: rgba(218, 21, 64, 0.43);
+
+    border-radius: 50%;
+
+    
+    background-size: cover;
+    background-position: center;
+    width: 400px;
+    height: 400px; 
+`;
+const Content = styled.div`
+   display: flex;
+   flex-direction: column;
+   gap: 160px;
+   
+  
+`;
+const TopPlayers = styled.div`
+  
+    color: white;
     display: flex;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+  
+    
 `;
 
-const PlayerImage = styled.img`
-    width: 150px;
-    height: 150px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    object-fit: cover;
-`;
+// Slide data
+const slideData = [
+    {
+        index: 0,
+        rank: "Rang 1",
+        name: "Xavier Aucher",
+        age: "25",
+        handedness: "Gaucher",
+        nationality: "France",
+        description: "Lorem Ipsum para bellum",
+    },
+    {
+        index: 1,
+        rank: "Rang 2",
+        name: "Vales UI",
+        age: "30",
+        handedness: "Droitier",
+        nationality: "Chine",
+        description: "Lorem Ipsum dolor sit amet",
+    },
+    {
+        index: 2,
+        rank: "Rang 2",
+        name: "Richard David",
+        age: "30",
+        handedness: "Droitier",
+        nationality: "Venezuela",
+        description: "Lorem Ipsum dolor sit amet",
+    },
+    {
+        index: 3,
+        rank: "Rang 2",
+        name: "Richard David",
+        age: "30",
+        handedness: "Droitier",
+        nationality: "USA",
+        description: "Lorem Ipsum dolor sit amet",
+    },
+];
 
-const PlayerInfo = styled.div`
-    padding: 20px;
-`;
+// Slider component usage
+function App() {
+    return (
+        <div>
+            <Slider heading="Example Slider" slides={slideData} />
+        </div>
+    );
+}
 
+export default App;

@@ -4,77 +4,73 @@ import styled from 'styled-components';
 // Composant principal de la mise en page
 
 const Summary = () => {
-    const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
 
 
 
 
-    // Fonction pour gérer le clic sur un élément de navigation
-    const handleNavItemClick = (index) => {
-        // Si l'élément actif est le même que l'index, le désactive
-        setActiveItem(activeItem === index ? null : index);
+  // Fonction pour gérer le clic sur un élément de navigation
+  const handleNavItemClick = (index) => {
+    // Si l'élément actif est le même que l'index, le désactive
+    setActiveItem(activeItem === index ? null : index);
 
-    };
+  };
 
-    return (
-        <Layout>
-            <LayoutBackdrop />
-            <LayoutFrontdrop />
-            <LayoutWrapper>
-                <LayoutHeader>
-                    <Nav>
-                        <NavItem>
-                            <NavLink href="#0" onClick={() => handleNavItemClick(1)}>Histoire</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#0" onClick={() => handleNavItemClick(2)}>Règle</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#0" onClick={() => handleNavItemClick(3)}>Les frères rivaux</NavLink>
-                            <ul >
-                                <SubMenu style={{ display: activeItem === 3 ? 'block' : 'none' }}>
-                                    <NavItem>
+  return (
+    <Layout>
+      <LayoutBackdrop />
+      <LayoutFrontdrop />
+      <LayoutWrapper>
+        <LayoutHeader>
+          <Nav>
 
-                                    </NavItem>
-                                </SubMenu>
-                            </ul>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#0" onClick={() => handleNavItemClick(4)}>Classements</NavLink>
-                            <ul>
-                                <SubMenu style={{ display: activeItem === 4 ? 'block' : 'none' }}>
-                                    <NavItem>
-                                        <NavLink href="#0">WANG Chuqin</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="#0">FAN Zhendong</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="#0">LIANG Jingkun</NavLink>
-                                    </NavItem>
-                                </SubMenu>
-                            </ul>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#0" onClick={() => handleNavItemClick(5)}>Moment fort</NavLink>
-                        </NavItem>
-                    </Nav>
-                </LayoutHeader>
-                <LayoutMain>
-                    <HeroSection>
-                        <HeroBlock>
-                            <HeroTitle>
-                                Fork It <em>Navigation with Sub-navigation, a Codepen Challenge, Aug 2019.</em>
-                            </HeroTitle>
-                            <HeroText>
-                                The idea was to fork <a href="https://codepen.io/pen?template=PMbwKb" target="_blank">a pretty basic navigation</a> and make something nice with it. The content inspired me some kind of advertising adgency with a bold navigation and a little content. Made me work on my hover and active state more than what I'm used to in those weekly challenges.
-                            </HeroText>
-                        </HeroBlock>
-                    </HeroSection>
-                </LayoutMain>
-            </LayoutWrapper>
-        </Layout>
-    );
+
+            <NavItem>
+              <NavLink href="#0" onClick={() => handleNavItemClick(3)}>Les frères rivaux</NavLink>
+              <ul >
+                <SubMenu style={{ display: activeItem === 3 ? 'block' : 'none' }}>
+                  <NavItem>
+
+                  </NavItem>
+                </SubMenu>
+              </ul>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#0" onClick={() => handleNavItemClick(4)}>Classements</NavLink>
+              <ul>
+                <SubMenu style={{ display: activeItem === 4 ? 'block' : 'none' }}>
+                  <NavItem>
+                    <NavLink href="#0">WANG Chuqin</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#0">FAN Zhendong</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#0">LIANG Jingkun</NavLink>
+                  </NavItem>
+                </SubMenu>
+              </ul>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#0" onClick={() => handleNavItemClick(5)}>Moment fort</NavLink>
+            </NavItem>
+          </Nav>
+        </LayoutHeader>
+        <LayoutMain>
+          <HeroSection>
+            <HeroBlock>
+              <HeroTitle>
+                Fork It <em>Navigation with Sub-navigation, a Codepen Challenge, Aug 2019.</em>
+              </HeroTitle>
+              <HeroText>
+                The idea was to fork <a href="https://codepen.io/pen?template=PMbwKb" target="_blank">a pretty basic navigation</a> and make something nice with it. The content inspired me some kind of advertising adgency with a bold navigation and a little content. Made me work on my hover and active state more than what I'm used to in those weekly challenges.
+              </HeroText>
+            </HeroBlock>
+          </HeroSection>
+        </LayoutMain>
+      </LayoutWrapper>
+    </Layout>
+  );
 };
 
 const Layout = styled.div`

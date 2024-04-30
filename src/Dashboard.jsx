@@ -6,6 +6,7 @@ import Header from './Components/Header';
 import Carousel from './Components/Carousel';
 import TopPlayers from './Components/TopPlayers';
 
+
 const Dashboard = () => {
 
     const [imageUrl, setImageUrl] = useState('/img/Story.svg');
@@ -16,26 +17,23 @@ const Dashboard = () => {
             <GlobalStyle />
             <Video autoPlay muted loop id="bg-video" src="./video/PingPong.mp4" type="video/mp4" />
             <Header />
-            <DashboardContainer>
+            <Homepage>
                 <CarouselBackground imageUrl={imageUrl}>
                     <Carousel imageUrl={imageUrl} setImageUrl={setImageUrl} text={text} setText={setText} />
                 </CarouselBackground>
-                <div className='Container'>
-                    <PlayersSection>
-                        <TopPlayers />
-                    </PlayersSection>
 
 
-                    <Summary />
-                </div>
-                <Link to="/formulaire" style={{ textDecoration: 'none', color: 'inherit' }}>
+            </Homepage>
+            <div className='Section'>
+                <PlayersSection>
+                    <TopPlayers />
+                </PlayersSection>
 
-                    <button type="button" className="btn btn-dark">
-                        Connexion
-                    </button>
-                </Link>
-            </DashboardContainer>
 
+                <Summary />
+
+
+            </div>
         </>
     )
 }
@@ -44,8 +42,10 @@ export default Dashboard
 
 const GlobalStyle = createGlobalStyle`
    body {
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden; 
+    
+    margin: 0px;
+    padding: 0px;
     height: 100%;
     width: 100%;
     background-image: url("/img/BackgroundImg.svg");
@@ -67,7 +67,7 @@ const Video = styled.video`
   object-fit: cover;
   margin-bottom: 400px;
 `;
-const DashboardContainer = styled.div`
+const Homepage = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 65%;
@@ -84,6 +84,13 @@ const CarouselBackground = styled.div`
 `;
 
 const PlayersSection = styled.div`
-   margin-top: 45px;
-    
+  margin-top: 62%;
+ 
+    left: 0;
+    width: 100%;
+    height: 790px;
+    background-image: url('/img/Podium.svg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
 `;

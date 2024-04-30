@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -8,6 +9,12 @@ const Header = () => {
             <HeaderContent>
                 <div className="link-btg">
                     <SocialLinks className="flex items-center space-x-4">
+                        <Link to="/formulaire" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+
+                            Connexion
+
+                        </Link>
                         <a href="#" className="text-white">Instagram</a>
                         <a href="#" className="text-white">TikTok</a>
                     </SocialLinks>

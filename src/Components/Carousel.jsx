@@ -159,7 +159,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                 <Slider>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1880-1900')}>1880-1900</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -171,7 +174,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1901')} >1901</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -183,7 +189,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1902')}>1902</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -195,7 +204,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1903')}>1903</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -207,7 +219,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1922')}>1922</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -219,7 +234,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1926')}>1926</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -231,7 +249,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1927')}>1927</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -243,7 +264,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1930-1940')} >1930-1940</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -255,7 +279,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1950')}>1950</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -267,7 +294,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1960')}>1960</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -279,7 +309,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1970')}>1970</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -291,7 +324,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1988')}>1988</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -303,7 +339,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('1990-2000')}>1990-2000</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                     <span>|</span>
                     <span>|</span>
@@ -315,7 +354,10 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     <span>|</span>
                     <TimelineItem>
                         <TimelineDate onClick={() => handleDateClick('2010-Today')}>2010-Today</TimelineDate>
-                        <i className="pi pi-circle-fill" style={{ color: 'white' }}></i>
+                        <i className="pi pi-circle-fill" style={{
+                            color: 'white', display: 'block',
+                            textAlign: 'center'
+                        }}></i>
                     </TimelineItem>
                 </Slider>
             </SliderContainer>
