@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Link } from 'react-router-dom';
 import Summary from './Components/Summary';
 import Header from './Components/Header';
 import Carousel from './Components/Carousel';
@@ -29,7 +28,9 @@ const Dashboard = () => {
                     <TopPlayers />
                 </PlayersSection>
 
+                <RivalBrothers>
 
+                </RivalBrothers>
                 <Summary />
 
 
@@ -43,19 +44,25 @@ export default Dashboard
 const GlobalStyle = createGlobalStyle`
    body {
     overflow-x: hidden; 
-    
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
-    background-image: url("/img/BackgroundImg.svg");
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%, /* #000000 opacity: 100% */
+      rgba(2, 2, 36, 0.99) 22%, /* #020224 opacity: 99% */
+      rgba(2, 4, 49, 1) 46%, /* #020431 opacity: 100% */
+      rgba(97, 47, 60, 0.4) 55%, /* #612F3C opacity: 40% */
+      rgba(21, 3, 72, 1) 62%, /* #150348 opacity: 100% */
+      rgba(18, 25, 90, 0.95) 76%, /* #12195A opacity: 95% */
+      rgba(0, 171, 206, 1) 100% /* #00ABCE opacity: 100% */
+    );
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     font-family: sans-serif;
-    
   }
-
 `;
 
 const Video = styled.video`
@@ -70,7 +77,7 @@ const Video = styled.video`
 const Homepage = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 65%;
+  padding-top: 36%;
 `;
 
 const CarouselBackground = styled.div`
@@ -90,6 +97,19 @@ const PlayersSection = styled.div`
     width: 100%;
     height: 790px;
     background-image: url('/img/Podium.svg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+`;
+
+const RivalBrothers = styled.div`
+    
+ 
+ 
+    left: 0;
+    width: 100%;
+    height: 367px;
+    background-image: url('/img/Rival.svg');
     background-size: cover;
     display: flex;
     align-items: center;
