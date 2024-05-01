@@ -11,6 +11,8 @@ const Dashboard = () => {
     const [imageUrl, setImageUrl] = useState('/img/Story.svg');
     const [text, setText] = useState('');
 
+    //Tentative pour changer l'image de fond de Backgroundlebrun 
+
     const changeBackgroundStyle = (index) => {
         if (index === 1) {
             return {
@@ -21,7 +23,7 @@ const Dashboard = () => {
                 backgroundImage: "url('/img/Lebrun2.svg')",
             };
         }
-        // Si l'index n'est ni 1 ni 2, retournez simplement l'image de fond actuelle
+
         return {
             backgroundImage: `url('${imageUrl}')`,
         };
@@ -146,7 +148,7 @@ const PlayersSection = styled.div`
     height: 100%;
     background-image: url('/img/Podium.svg');
     background-size: cover;
-    opacity: 0.5; /* Opacité de l'image de fond */
+    opacity: 0.5; 
   }
 `;
 const RivalBrothers = styled.div`

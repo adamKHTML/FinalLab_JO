@@ -4,7 +4,7 @@ import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import WorkspacePremiumTwoToneIcon from '@mui/icons-material/WorkspacePremiumTwoTone';
 
-// Slide component
+
 const Slide = ({ slide, current, handleSlideClick }) => {
     const { index, image, ranking, firstName, lastName, age, style, country, description } = slide;
 
@@ -59,7 +59,7 @@ const Slide = ({ slide, current, handleSlideClick }) => {
     );
 };
 
-// Slider component
+
 const Slider = ({ slides, heading }) => {
     const [current, setCurrent] = React.useState(0);
     const sliderRef = React.useRef(null);
@@ -110,7 +110,7 @@ const SliderContainer = styled.div`
 `;
 
 
-// Utilisation de SliderWrapper avec un style de défilement horizontal
+
 const SliderWrapper = styled.div`
   
   display: flex;
@@ -207,7 +207,7 @@ const Text = styled.div`
 `;
 
 
-// Slider component usage
+
 function App() {
     const [playerData, setPlayerData] = useState([]);
 

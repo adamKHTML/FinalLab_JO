@@ -21,7 +21,7 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
         let newText = '';
 
         let image = '';
-        // Associer chaque date à son image correspondante
+
         switch (date) {
 
 
@@ -83,7 +83,7 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
 
                 newText = <p>  <span style={{ fontFamily: 'Lunch time' }}>2010-A nos Jour</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Le ping-pong</span> reste l'un des sports les plus populaires au monde.
                     Diversité des styles de jeu et des joueurs talentueux de toutes les régions du monde avec l' intégration de nouvelles technologies pour améliorer l'expérience de jeu et de spectateur.
-                    Augmentation de la popularité du sport en Amérique du Nord et du Sud et utilisation croissante des technologies, comme la vidéo et l'analyse des données.;
+                    Augmentation de la popularité du sport en Amérique du Nord et du Sud et utilisation croissante des technologies, comme la vidéo et l'analyse des données.
                 </p>
 
                 break;
@@ -410,9 +410,9 @@ const SliderContainer = styled.div`
   overflow-x: auto; 
     white-space: nowrap; 
     -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Cacher la barre de défilement pour Firefox */
+  scrollbar-width: none;
   &::-webkit-scrollbar {
-    display: none; /* Cacher la barre de défilement pour les navigateurs basés sur WebKit */
+    display: none;
   }
   scroll-behavior: smooth;
 
@@ -424,7 +424,7 @@ const Slider = styled.div`
  height: 50px;
  justify-content: space-around;
  margin: 20% 0 20% 0;
- display: flex; /* Permet aux éléments enfants de s'afficher en ligne */
+ display: flex; 
  
 
 `

@@ -5,7 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import { useNavigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import NavBar from './NavBar';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -40,7 +40,7 @@ const UpdateContent = () => {
 
                 if (snapshot.exists()) {
                     const data = snapshot.data();
-                    setPlayer(data); // Mettre à jour l'état local avec les données du joueur
+                    setPlayer(data);
                 } else {
                     console.error('No such player document!');
                 }
@@ -79,7 +79,6 @@ const UpdateContent = () => {
                 description: player.description,
                 ranking: parseInt(player.ranking),
                 style: player.style,
-                // Vérifiez si country est défini avant de l'ajouter
                 country: player.country ? player.country : '',
                 image: player.image ? player.image : "No picture :(",
             };
@@ -127,6 +126,8 @@ const UpdateContent = () => {
     return (
 
         <>
+
+            <GlobalStyle />
             <NavBar />
 
             <StyledForm>
@@ -178,13 +179,29 @@ const UpdateContent = () => {
 
 export default UpdateContent;
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    
+    background-image: url('/img/UpdateDoc.svg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+`;
 
 
 const StyledForm = styled(Form)`
-    padding: 9px;
-    border-radius: 10px;
+
+
     border-color: #000000;
-    margin-top: 60px;
+    margin-top: 76px;
+    border-radius: 18px;
+    background: white;
+    padding: 22px;
+
+    
+  
 `;
 
 const StyledFormGroup = styled(Form.Group)`

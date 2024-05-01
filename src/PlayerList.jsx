@@ -58,7 +58,7 @@ const PlayerList = () => {
                     </button>
                 </Link>
             </Section>
-            <StyledTable striped bordered hover> {/* Utiliser le composant Table de React Bootstrap */}
+            <StyledTable striped bordered hover>
                 <thead>
                     <tr>
                         <th></th>
@@ -68,7 +68,7 @@ const PlayerList = () => {
                         <th>Ranking</th>
                         <th>Style</th>
                         <th>Country</th>
-                        <th>Action</th> {/* Ajouter une colonne pour les actions */}
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -126,11 +126,11 @@ const StyledTable = styled(Table)`
 
 
 const PlayerImage = styled.img`
-    width: 100px; // Largeur fixe
-    height: 100px; // Hauteur fixe
-    border-radius: 24%; // Conserver l'arrondi
+    width: 100px; 
+    height: 100px; 
+    border-radius: 24%; 
     margin-right: 20px;
-    object-fit: cover; // Conserver les proportions sans déformation
+    object-fit: cover; 
 `;
 
 const Boutton = styled.button`

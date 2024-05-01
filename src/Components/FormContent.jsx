@@ -6,7 +6,7 @@ import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 
@@ -42,7 +42,7 @@ const PingPongForm = () => {
 
             if (parseInt(ranking) < 1 || parseInt(ranking) > 5) {
                 setErrorMessage('Le classement doit être compris entre 1 et 5.');
-                return; // Empêcher la soumission du formulaire
+                return;
             }
 
 
@@ -78,7 +78,7 @@ const PingPongForm = () => {
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
 
-        // Vérifiez si un fichier est sélectionné
+
         if (!file) {
             console.error('Aucun fichier sélectionné.');
             return;
@@ -111,8 +111,8 @@ const PingPongForm = () => {
 
     const changeHandler = (selectedOption) => {
         try {
-            setCountry(selectedOption); // Affecter la valeur sélectionnée à l'état 'nationality'
-            setValue(selectedOption); // Affecter la valeur sélectionnée à l'état 'value'
+            setCountry(selectedOption); // Affecte la valeur sélectionnée à l'état 'nationality'
+            setValue(selectedOption); // Affecte la valeur sélectionnée à l'état 'value'
         } catch (error) {
             console.error('Error setting country: ', error);
         }
@@ -120,62 +120,64 @@ const PingPongForm = () => {
 
     return (
         <>
+            <GlobalStyle />
 
             <NavBar />
 
-            <StyledForm>
-                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                <StyledFormGroup>
-                    <StyledFormControl type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                </StyledFormGroup>
-                <StyledFormGroup>
-                    <StyledFormControl type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                </StyledFormGroup>
-                <StyledFormGroup>
-                    <StyledFormControl type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
-                </StyledFormGroup>
-                <StyledFormGroup>
-                    <Form.Group className="mb-3" >
-                        <Form.Control as="textarea" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+            <div className="container">
+                <StyledForm>
+                    {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+                    <StyledFormGroup>
+                        <StyledFormControl type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                    </StyledFormGroup>
+                    <StyledFormGroup>
+                        <StyledFormControl type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                    </StyledFormGroup>
+                    <StyledFormGroup>
+                        <StyledFormControl type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
+                    </StyledFormGroup>
+                    <StyledFormGroup>
+                        <Form.Group className="mb-3" >
+                            <Form.Control as="textarea" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        </Form.Group>
+                    </StyledFormGroup>
+                    <StyledFormGroup>
+                        <StyledFormControl
+                            type="number"
+                            placeholder="Ranking"
+                            value={ranking}
+                            onChange={(e) => setRanking(e.target.value)}
+                            min={1}
+                            max={5}
+                        />
+                    </StyledFormGroup>
+
+                    <Form.Select value={style} onChange={(e) => setStyle(e.target.value)}>
+                        <option value="">Select Style</option>
+                        <option value="Gaucher">Gaucher</option>
+                        <option value="Droitier">Droitier</option>
+                    </Form.Select>
+
+
+
+                    <StyledFormGroup>
+                        <Select options={options} value={value} onChange={changeHandler} />
+                    </StyledFormGroup>
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Control type="file" onChange={handleImageUpload} />
                     </Form.Group>
-                </StyledFormGroup>
-                <StyledFormGroup>
-                    <StyledFormControl
-                        type="number"
-                        placeholder="Ranking"
-                        value={ranking}
-                        onChange={(e) => setRanking(e.target.value)}
-                        min={1}
-                        max={5}
-                    />
-                </StyledFormGroup>
+                    <StyledFormGroup>
+                        <StyledButton onClick={sendPlayer}>Submit</StyledButton>
+                        <Link to="/admin" style={{ textDecoration: 'none', color: 'inherit' }}>
 
-                <Form.Select value={style} onChange={(e) => setStyle(e.target.value)}>
-                    <option value="">Select Style</option>
-                    <option value="Gaucher">Gaucher</option>
-                    <option value="Droitier">Droitier</option>
-                </Form.Select>
+                            <StyledButton style={{ marginTop: '15px' }} type="button">
+                                Annuler
+                            </StyledButton>
+                        </Link>
 
-
-
-                <StyledFormGroup>
-                    <Select options={options} value={value} onChange={changeHandler} />
-                </StyledFormGroup>
-                <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" onChange={handleImageUpload} />
-                </Form.Group>
-                <StyledFormGroup>
-                    <StyledButton onClick={sendPlayer}>Submit</StyledButton>
-                    <Link to="/admin" style={{ textDecoration: 'none', color: 'inherit' }}>
-
-                        <StyledButton style={{ marginTop: '15px' }} type="button">
-                            Annuler
-                        </StyledButton>
-                    </Link>
-
-                </StyledFormGroup>
-            </StyledForm>
-
+                    </StyledFormGroup>
+                </StyledForm>
+            </div>
         </>
     );
 };
@@ -186,16 +188,36 @@ export default PingPongForm;
 
 const StyledForm = styled(Form)`
 
-padding: 9px;
-    border-radius: 10px;
+
     border-color: #000000;
-    margin-top: 60px;
+    margin-top: 76px;
+    border-radius: 18px;
+    background: white;
+    padding: 22px;
+
+    
   
 `;
 
 const StyledFormGroup = styled(Form.Group)`
   margin-bottom: 20px;
 `;
+
+
+
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    
+    background-image: url('/img/AddDoc.svg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+`;
+
+
 
 const StyledFormControl = styled(Form.Control)`
   
