@@ -32,6 +32,8 @@ export default Header
 const HeaderContainer = styled.div`
   position: relative;
   transition: 0.3s ease-in-out;
+  height: 191px;
+  background-color: transparent;
   
 `;
 
@@ -44,7 +46,7 @@ const HeaderContent = styled.header`
   padding: 1rem; 
   box-sizing: border-box;
   color: white;
- 
+  z-index: 1; 
  
 `;
 

@@ -24,14 +24,26 @@ const Dashboard = () => {
 
             </Homepage>
             <div className='Section'>
+
                 <PlayersSection>
+
+                    <Title>Top 5 des Meilleurs Joueurs des meilleurs Joueurs Mondiaux</Title>
+
                     <TopPlayers />
+
                 </PlayersSection>
 
                 <RivalBrothers>
-
+                    <h1 style={{
+                        color: ' black', fontSize: 46,
+                        lineHeight: 50,
+                        fontWeight: '900',
+                        fontFamily: 'Lunch time, sans-serif'
+                    }}>Les frères rivaux</h1>
                 </RivalBrothers>
-                <Summary />
+                <LebrunBackground>
+                    <Summary />
+                </LebrunBackground>
 
 
             </div>
@@ -67,12 +79,12 @@ const GlobalStyle = createGlobalStyle`
 
 const Video = styled.video`
   position: absolute;
-  top: 0;
+  top: -126px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 1291px;
   object-fit: cover;
-  margin-bottom: 400px;
+  margin-bottom: 400px; 
 `;
 const Homepage = styled.div`
   display: flex;
@@ -84,24 +96,34 @@ const CarouselBackground = styled.div`
     position: absolute;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 800px;
     background-image: ${({ imageUrl }) => `url(${imageUrl})`};
     background-size: cover;
     
 `;
 
 const PlayersSection = styled.div`
+  position: relative;
   margin-top: 62%;
- 
+  left: 0;
+  width: 100%;
+  height: 1144px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 200px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 790px;
+    height: 100%;
     background-image: url('/img/Podium.svg');
     background-size: cover;
-    display: flex;
-    align-items: center;
+    opacity: 0.5; /* Opacité de l'image de fond */
+  }
 `;
-
 const RivalBrothers = styled.div`
     
  
@@ -113,4 +135,32 @@ const RivalBrothers = styled.div`
     background-size: cover;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    padding: 60px;
 `;
+
+const Title = styled.h1`
+ position: absolute; /* Ajoutez cette ligne */
+    top: 20px; /* Ajustez selon votre besoin */
+    left: 55%; /* Placez le titre au centre */
+    transform: translateX(-50%); /* Centrez horizontalement */
+    color: #ffc617;
+    font-size: 46px;
+    line-height: 50px;
+    font-weight: 900;
+    font-family: 'Lunch time', sans-serif;
+    
+   
+    
+`;
+
+const LebrunBackground = styled.div`
+    
+    left: 0;
+    width: 100%;
+    height: 800px;
+    background-image: url('/img/Lebrun1.svg') ;
+    background-size: cover;
+    
+`;
+

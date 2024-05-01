@@ -12,10 +12,13 @@ const Slide = ({ slide, current, handleSlideClick }) => {
     if (current === index) classNames += " slide--current";
 
     return (
+
+
         <SlideContainer
             className={classNames}
             onClick={() => handleSlideClick(slide.index)}
         >
+
             <SlideContent>
                 <TopPlayers>
                     <Circle style={{ backgroundImage: `url(${image})` }} />
@@ -32,6 +35,7 @@ const Slide = ({ slide, current, handleSlideClick }) => {
                 </TopPlayers>
             </SlideContent>
         </SlideContainer>
+
     );
 };
 
@@ -46,6 +50,10 @@ const Slider = ({ slides, heading }) => {
             const slideWidth = sliderRef.current.offsetWidth;
             const scrollLeft = index * slideWidth;
             sliderRef.current.style.transform = `translateX(-${scrollLeft}px)`;
+        } else if (index === slides.length - 1) {
+            // Si l'index est le dernier, afficher le premier joueur après le dernier joueur
+            setCurrent(0);
+            sliderRef.current.style.transform = `translateX(0)`;
         }
     };
 
@@ -57,7 +65,7 @@ const Slider = ({ slides, heading }) => {
                 {slides.map((slide, index) => (
 
                     <Slide
-                        key={index} // Utiliser l'index comme clé
+                        key={index}
                         slide={slide}
                         current={current}
                         handleSlideClick={handleSlideClick}
@@ -71,9 +79,11 @@ const Slider = ({ slides, heading }) => {
 // Style components
 const SliderContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 0;
 `;
+
 
 // Utilisation de SliderWrapper avec un style de défilement horizontal
 const SliderWrapper = styled.div`
@@ -89,7 +99,7 @@ const SlideContainer = styled.li`
   flex: 1 0 100%;
   opacity: 0.25;
   transition: opacity 0.3s ease;
-  width: 300px;
+  width: 200px;
   height: 400px;
 
   &.slide--current {
@@ -103,6 +113,7 @@ const SlideContent = styled.div`
   height: 100%;
   justify-content: center;
   flex-direction: row;
+
 `;
 
 const Rank = styled.div`
@@ -110,6 +121,8 @@ const Rank = styled.div`
   border-radius: 25px;
   height: 58px;
   width: 115px;
+ 
+ 
 `;
 
 const Info = styled.div`
@@ -118,6 +131,8 @@ const Info = styled.div`
   height: 88px;
   width: 170px;
   font-size: 12px;
+
+  
 `;
 
 const Circle = styled.div`
@@ -133,6 +148,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 160px;
+
+  
 `;
 
 const TopPlayers = styled.div`
@@ -140,6 +157,7 @@ const TopPlayers = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 `;
 
 // Slider component usage
@@ -154,9 +172,12 @@ function App() {
                 let index = 0;
                 querySnapshot.forEach((doc) => {
                     const player = { id: doc.id, ...doc.data(), index: index };
+
                     data.push(player);
+
                     index++;
                 });
+
                 setPlayerData(data);
             } catch (error) {
                 console.error('Error fetching data:', error);

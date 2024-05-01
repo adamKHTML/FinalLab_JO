@@ -60,10 +60,10 @@ const Summary = () => {
           <HeroSection>
             <HeroBlock>
               <HeroTitle>
-                Fork It <em>Navigation with Sub-navigation, a Codepen Challenge, Aug 2019.</em>
+
               </HeroTitle>
               <HeroText>
-                The idea was to fork <a href="https://codepen.io/pen?template=PMbwKb" target="_blank">a pretty basic navigation</a> and make something nice with it. The content inspired me some kind of advertising adgency with a bold navigation and a little content. Made me work on my hover and active state more than what I'm used to in those weekly challenges.
+                <a href="https://codepen.io/pen?template=PMbwKb" target="_blank"></a> and make something nice with it. The content inspired me some kind of advertising adgency with a bold navigation and a little content. Made me work on my hover and active state more than what I'm used to in those weekly challenges.
               </HeroText>
             </HeroBlock>
           </HeroSection>
