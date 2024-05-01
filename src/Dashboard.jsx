@@ -32,7 +32,7 @@ const Dashboard = () => {
                     <TopPlayers />
 
                 </PlayersSection>
-
+                <Fill />
                 <RivalBrothers>
                     <h1 style={{
                         color: ' black', fontSize: 46,
@@ -110,7 +110,7 @@ const PlayersSection = styled.div`
   height: 1144px;
   display: flex;
   align-items: center;
-  margin-bottom: 200px;
+ 
 
   &::before {
     content: '';
@@ -137,6 +137,8 @@ const RivalBrothers = styled.div`
     align-items: center;
     justify-content: flex-end;
     padding: 60px;
+   
+   
 `;
 
 const Title = styled.h1`
@@ -153,6 +155,13 @@ const Title = styled.h1`
    
     
 `;
+
+const Fill = styled.div`
+ height: 200px;
+ width: 100%;
+ background: linear-gradient(to bottom, #494c76, #33488b);
+`;
+
 
 const LebrunBackground = styled.div`
     

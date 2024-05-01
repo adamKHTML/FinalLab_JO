@@ -29,64 +29,61 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
             case '1901':
                 image = Story1;
                 newText = <p  >
-                    <span style={{ fontFamily: 'Lunch time' }}>1901</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}> John Jaques</span> dépose le nom "Ping-Pong" pour commercialiser des équipements.
+                    <span style={{ fontFamily: 'Lunch time' }}>1901</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>John Jaques</span><br /> dépose le nom "Ping-Pong" pour commercialiser des équipements.
                 </p>
                 break;
             case '1903':
                 image = Story2;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1903</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Création</span> de la Fédération anglaise de tennis de table.;
+                    <span style={{ fontFamily: 'Lunch time' }}>1903</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Création</span> de la Fédération anglaise de tennis de table.
                 </p>
                 break;
             case '1922':
                 image = Story2;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1922</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Fondation</span> de l'Union internationale de tennis de table (UITT).;
+                    <span style={{ fontFamily: 'Lunch time' }}>1922</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Fondation</span> de l'Union internationale de tennis de table "UITT".
                 </p>
                 break;
             case '1930-1940':
                 image = Story4;
                 newText = <p>
-                    < span style={{ fontFamily: 'Lunch time' }}>1930-1940</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}> Popularisation</span> du ping-pong en Europe et en Asie.;
+                    < span style={{ fontFamily: 'Lunch time' }}>1930-1940</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Popularisation</span> du ping-pong en Europe et en Asie.
                 </p>
                 break;
             case '1950':
                 image = Story4;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1950</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Introduction </span> des balles en celluloïd et des raquettes en caoutchouc mousse.;
+                    <span style={{ fontFamily: 'Lunch time' }}>1950</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Introduction </span> des balles en celluloïd et des raquettes en caoutchouc mousse.
                 </p>
 
                 break;
             case '1960':
                 image = Story4;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1960</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}> Professionnalisation </span> du sport et domination des joueurs asiatiques.;
+                    <span style={{ fontFamily: 'Lunch time' }}>1960</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Professionnalisation </span> du sport et domination des joueurs asiatiques.
                 </p>
 
                 break;
             case '1970':
                 image = Story4;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1970</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Adoption</span> des sets de 11 points et du service alternatif.;
+                    <span style={{ fontFamily: 'Lunch time' }}>1970</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Adoption</span> des sets de 11 points et du service alternatif.
                 </p>
                 break;
             case '1990-2000':
                 image = Story5;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1990 - 2000</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Développement</span>de nouvelles techniques et de styles de jeu plus rapides.
-                    Augmentation de la popularité du sport en Amérique du Nord et du Sud.
-                    Utilisation croissante des technologies, comme la vidéo et l'analyse des données.;
+                    <span style={{ fontFamily: 'Lunch time' }}>1990 - 2000</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Développement</span> de nouvelles techniques et de styles de jeu plus rapides.
+                    Augmentation de la popularité du sport en Amérique du Nord et du Sud et utilisation croissante des technologies, comme la vidéo et l'analyse des données.
                 </p>
 
                 break;
             case '2010-Today':
                 image = Story5;
 
-                newText = <p>  <span style={{ fontFamily: 'Lunch time' }}>2010-A nos Jour</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}> Le ping-pong</span>reste l'un des sports les plus populaires au monde.
-                    Diversité des styles de jeu et des joueurs talentueux de toutes les régions du monde.
-                    Intégration de nouvelles technologies pour améliorer l'expérience de jeu et de spectateur.;
-                    Augmentation de la popularité du sport en Amérique du Nord et du Sud.
-                    Utilisation croissante des technologies, comme la vidéo et l'analyse des données.;
+                newText = <p>  <span style={{ fontFamily: 'Lunch time' }}>2010-A nos Jour</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Le ping-pong</span> reste l'un des sports les plus populaires au monde.
+                    Diversité des styles de jeu et des joueurs talentueux de toutes les régions du monde avec l' intégration de nouvelles technologies pour améliorer l'expérience de jeu et de spectateur.
+                    Augmentation de la popularité du sport en Amérique du Nord et du Sud et utilisation croissante des technologies, comme la vidéo et l'analyse des données.;
                 </p>
 
                 break;
@@ -94,8 +91,8 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                 image = Story1;
                 newText =
                     <p>
-                        <span style={{ fontFamily: 'Lunch time' }}>1880-1900</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Apparition</span>du "tennis d'intérieur" en Angleterre, inspiré du tennis sur gazon.
-                        Utilisation de balles en caoutchouc, de raquettes en bois et d'un filet improvisé.
+                        <span style={{ fontFamily: 'Lunch time' }}>1880-1900</span> <br /><span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Apparition</span> du "tennis d'intérieur" en Angleterre, inspiré du tennis sur gazon.
+                        <br /> Utilisation de balles en caoutchouc, de raquettes en bois et d'un filet improvisé.
                     </p>
 
                 break;
@@ -111,7 +108,7 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                 image = Story3;
                 newText =
                     <p>
-                        <span style={{ fontFamily: 'Lunch time' }}>1926</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>L'UITT</span>devient la Fédération Internationale de Tennis de Table (ITTF).;
+                        <span style={{ fontFamily: 'Lunch time' }}>1926</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>L'UITT</span> devient la Fédération Internationale de Tennis de Table "ITTF".
                     </p>
 
 
@@ -119,7 +116,7 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
             case '1927':
                 image = Story4;
                 newText = <p>
-                    <span style={{ fontFamily: 'Lunch time' }}>1927</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Premiers</span>championnats du monde à Londres.
+                    <span style={{ fontFamily: 'Lunch time' }}>1927</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Premiers</span> championnats du monde à Londres.
                 </p>
 
 
@@ -128,7 +125,7 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                 image = Story5;
                 newText =
                     <p>
-                        <span style={{ fontFamily: 'Lunch time' }}>1988</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Le ping-pong</span>devient une discipline olympique à Séoul.
+                        <span style={{ fontFamily: 'Lunch time' }}>1988</span> <br /> <span style={{ fontFamily: 'Lunch time', color: '#ffc617', fontSize: '4rem' }}>Le ping-pong</span> devient une discipline olympique à Séoul.
                     </p>
 
                 break;
@@ -149,7 +146,9 @@ const TimelineSlider = ({ setImageUrl, imageUrl, text, setText }) => {
                     display: 'block',
                     textAlign: 'center',
                     marginLeft: '237px',
-                    backgroundColor: 'rgba(125, 125, 125, 0.4)',
+                    backgroundColor: 'rgba(16, 16, 16 , 0.5)',
+                    transform: 'skew(20deg)'
+
 
                 }}>
                     <Text>{text}</Text>
@@ -441,8 +440,9 @@ const TextStyle = styled.div`
 
 const Text = styled.p`
         font-size: 29px;
-
     line-height: 1.5;
     color: white;
+    display: flex;
+    flex-direction: column;
    
 `;
