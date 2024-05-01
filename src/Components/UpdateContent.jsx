@@ -116,7 +116,7 @@ const UpdateContent = () => {
     const changeHandler = (selectedOption) => {
         if (selectedOption) {
             try {
-                setPlayer({ ...player, country: selectedOption });
+                setPlayer({ ...player, country: selectedOption.label });
             } catch (error) {
                 console.error('Error setting country: ', error);
             }
@@ -156,9 +156,9 @@ const UpdateContent = () => {
                         <option value="Droitier">Droitier</option>
                     </Form.Select>
                 </StyledFormGroup>
-                <StyledForm>
+                <StyledFormGroup>
                     <Select options={countryList().getData()} value={player.country} onChange={changeHandler} />
-                </StyledForm>
+                </StyledFormGroup>
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Control type="file" onChange={handleImageUpload} />
                 </Form.Group>
