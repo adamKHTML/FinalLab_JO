@@ -11,6 +11,22 @@ const Dashboard = () => {
     const [imageUrl, setImageUrl] = useState('/img/Story.svg');
     const [text, setText] = useState('');
 
+    const changeBackgroundStyle = (index) => {
+        if (index === 1) {
+            return {
+                backgroundImage: "url('/img/Lebrun1.svg')",
+            };
+        } else if (index === 2) {
+            return {
+                backgroundImage: "url('/img/Lebrun2.svg')",
+            };
+        }
+        // Si l'index n'est ni 1 ni 2, retournez simplement l'image de fond actuelle
+        return {
+            backgroundImage: `url('${imageUrl}')`,
+        };
+    };
+
     return (
         <>
 
@@ -29,7 +45,7 @@ const Dashboard = () => {
 
                 <PlayersSection>
 
-                    <Title>Top 5 des Meilleurs Joueurs des meilleurs Joueurs Mondiaux</Title>
+                    <Title>Top 5 des Meilleurs Joueurs   Mondiaux</Title>
 
                     <TopPlayers />
 
@@ -43,8 +59,8 @@ const Dashboard = () => {
                         fontFamily: 'Lunch time, sans-serif'
                     }}>Les frères rivaux</h1>
                 </RivalBrothers>
-                <LebrunBackground>
-                    <Summary />
+                <LebrunBackground backgroundStyle={changeBackgroundStyle(1)}>
+                    <Summary changeBackgroundStyle={changeBackgroundStyle} />
                 </LebrunBackground>
 
             </div>
@@ -78,6 +94,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
     
      min-height: 100%;
+     font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
 
   }
 `;
@@ -148,15 +167,16 @@ const RivalBrothers = styled.div`
 `;
 
 const Title = styled.h1`
- position: absolute; /* Ajoutez cette ligne */
-    top: 20px; /* Ajustez selon votre besoin */
-    left: 55%; /* Placez le titre au centre */
-    transform: translateX(-50%); /* Centrez horizontalement */
+ position: absolute; 
+    top: 50px; 
+    left: 55%; 
+    transform: translateX(-50%); 
     color: #ffc617;
-    font-size: 46px;
+    font-size: 50px;
     line-height: 50px;
     font-weight: 900;
     font-family: 'Lunch time', sans-serif;
+    
     
    
     
@@ -176,7 +196,7 @@ const LebrunBackground = styled.div`
     left: 0;
     width: 100%;
     height: 800px;
-    background-image: url('/img/Lebrun1.svg');
+    ${({ backgroundStyle }) => backgroundStyle};
     background-size: cover;
     z-index: -1;
 `;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
+import WorkspacePremiumTwoToneIcon from '@mui/icons-material/WorkspacePremiumTwoTone';
 
 // Slide component
 const Slide = ({ slide, current, handleSlideClick }) => {
@@ -10,6 +11,22 @@ const Slide = ({ slide, current, handleSlideClick }) => {
     let classNames = "slide";
 
     if (current === index) classNames += " slide--current";
+
+    // Fonction pour déterminer la couleur de fond du rang
+    const getRankBackgroundColor = (rank) => {
+        switch (rank) {
+            case 1:
+                return 'conic-gradient(from -45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C)';
+            case 2:
+                return 'linear-gradient(45deg, #ededed, #bdbdbd)';
+            case 3:
+                return '#CD7F32';
+            default:
+                return 'black';
+        }
+    };
+
+    const rankBackgroundColor = getRankBackgroundColor(ranking);
 
     return (
 
@@ -23,13 +40,16 @@ const Slide = ({ slide, current, handleSlideClick }) => {
                 <TopPlayers>
                     <Circle style={{ backgroundImage: `url(${image})` }} />
                     <Content>
-                        <Rank>{ranking}</Rank>
+                        <Rank background={rankBackgroundColor}>{ranking}<WorkspacePremiumTwoToneIcon /></Rank>
                         <Info>
-                            <p>{firstName} {lastName}</p>
-                            <p>{age}</p>
-                            <p>{style}</p>
-                            <p>{country}</p>
-                            <p>{description}</p>
+                            <p style={{ fontWeight: 'bold', fontSize: 14 }}>{firstName} {lastName}</p>
+                            <Stats>
+                                <a>{age} ans</a>
+                                <a>{style}</a>
+                                <a>{country}</a>
+                            </Stats>
+                            <Text>{description}</Text>
+
                         </Info>
                     </Content>
                 </TopPlayers>
@@ -43,6 +63,11 @@ const Slide = ({ slide, current, handleSlideClick }) => {
 const Slider = ({ slides, heading }) => {
     const [current, setCurrent] = React.useState(0);
     const sliderRef = React.useRef(null);
+
+
+
+
+
 
     const handleSlideClick = index => {
         if (current !== index) {
@@ -87,7 +112,7 @@ const SliderContainer = styled.div`
 
 // Utilisation de SliderWrapper avec un style de défilement horizontal
 const SliderWrapper = styled.div`
-  white-space: nowrap;
+  
   display: flex;
   width: 100%;
   transition: transform 0.3s ease;
@@ -117,20 +142,25 @@ const SlideContent = styled.div`
 `;
 
 const Rank = styled.div`
-  background-color: #000000;
-  border-radius: 25px;
-  height: 58px;
-  width: 115px;
- 
- 
+     background: ${props => props.background};
+    border-radius: 25px;
+    height: 48px;
+    width: 57px;
+    word-wrap: break-word;
+    padding: 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;
 
 const Info = styled.div`
   border-radius: 25px;
   background: linear-gradient(to right, #da1540, #341269);
-  height: 88px;
-  width: 170px;
+  height: 200px;
+    width: 360px;
   font-size: 12px;
+  word-wrap: break-word;
+  padding: 15px ;
 
   
 `;
@@ -148,6 +178,10 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 160px;
+  overflow: hidden;
+  font-family: "Merriweather";
+  font-weight: 700;
+  font-style: bold;
 
   
 `;
@@ -159,6 +193,19 @@ const TopPlayers = styled.div`
   justify-content: center;
  
 `;
+const Stats = styled.div`
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom : 10px ;
+ 
+`;
+const Text = styled.div`
+ font-size: 13px;
+
+`;
+
 
 // Slider component usage
 function App() {

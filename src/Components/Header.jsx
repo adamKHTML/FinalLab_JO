@@ -15,8 +15,8 @@ const Header = () => {
                             Connexion
 
                         </Link>
-                        <a href="#" className="text-white">Instagram</a>
-                        <a href="#" className="text-white">TikTok</a>
+                        <a href="https://www.instagram.com/ffttofficiel" target='_blank' className="text-white">Instagram</a>
+                        <a href="https://www.facebook.com/FFTTofficiel" target='_blank' className="text-white">FaceBook</a>
                     </SocialLinks>
                     <div style={{ color: '#ffc617', fontSize: '2rem', fontFamily: 'Lunch time, sans-serif', textAlign: 'center' }}>
                         Ping Pong <br />Stories
