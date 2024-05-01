@@ -13,6 +13,8 @@ const Dashboard = () => {
 
     return (
         <>
+
+
             <GlobalStyle />
             <Video autoPlay muted loop id="bg-video" src="./video/PingPong.mp4" type="video/mp4" />
             <Header />
@@ -45,8 +47,8 @@ const Dashboard = () => {
                     <Summary />
                 </LebrunBackground>
 
-
             </div>
+
         </>
     )
 }
@@ -74,6 +76,9 @@ const GlobalStyle = createGlobalStyle`
     background-repeat: no-repeat;
     background-position: center;
     font-family: sans-serif;
+    
+     min-height: 100%;
+
   }
 `;
 
@@ -85,6 +90,7 @@ const Video = styled.video`
   height: 1291px;
   object-fit: cover;
   margin-bottom: 400px; 
+  
 `;
 const Homepage = styled.div`
   display: flex;
@@ -165,11 +171,13 @@ const Fill = styled.div`
 
 const LebrunBackground = styled.div`
     
+    
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 800px;
-    background-image: url('/img/Lebrun1.svg') ;
+    background-image: url('/img/Lebrun1.svg');
     background-size: cover;
-    
+    z-index: -1;
 `;
 

@@ -18,6 +18,7 @@ const UpdateContent = () => {
 
 
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const [player, setPlayer] = useState({
         firstName: '',
@@ -65,6 +66,11 @@ const UpdateContent = () => {
     const editPlayer = async () => {
         console.log("Editing player with ID:", id);
         try {
+
+
+
+
+
             const playerRef = doc(db, 'Players', id);
             const updatedData = {
                 firstName: player.firstName,
@@ -77,6 +83,10 @@ const UpdateContent = () => {
                 country: player.country ? player.country : '',
                 image: player.image ? player.image : "No picture :(",
             };
+            if (parseInt(player.ranking) < 1 || parseInt(player.ranking) > 5) {
+                setErrorMessage('Le classement doit être compris entre 1 et 5.');
+                return;
+            }
 
             await updateDoc(playerRef, updatedData);
             console.log('Player updated successfully');
@@ -120,6 +130,7 @@ const UpdateContent = () => {
             <NavBar />
 
             <StyledForm>
+                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                 <StyledFormGroup>
                     <StyledFormControl type="text" placeholder="First Name" value={player.firstName} onChange={(e) => setPlayer({ ...player, firstName: e.target.value })} />
                 </StyledFormGroup>
@@ -189,3 +200,10 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
+const ErrorMessage = styled.p`
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #f87272;
+`;

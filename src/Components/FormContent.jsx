@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-import { collection, addDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, doc, getDocs } from 'firebase/firestore';
 import { db, storage } from '../firebaseConfig';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Select from 'react-select';
@@ -24,6 +24,7 @@ const PingPongForm = () => {
     const [country, setCountry] = React.useState(null);
     const [image, setImage] = React.useState(null);
     const [value, setValue] = React.useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
 
@@ -37,6 +38,23 @@ const PingPongForm = () => {
     const sendPlayer = async () => {
         console.log("Button clicked, sending player...");
         try {
+
+
+            if (parseInt(ranking) < 1 || parseInt(ranking) > 5) {
+                setErrorMessage('Le classement doit être compris entre 1 et 5.');
+                return; // Empêcher la soumission du formulaire
+            }
+
+
+            // Vérifie si le classement existe déjà dans la base de données
+            const querySnapshot = await getDocs(collection(db, 'Players'));
+            const rankingExists = querySnapshot.docs.some(doc => doc.data().ranking === parseInt(ranking));
+            if (rankingExists) {
+                setErrorMessage('Un joueur avec ce classement existe déjà.');
+                return;
+            }
+
+
             const docRef = await addDoc(collection(db, 'Players'), {
                 firstName,
                 lastName,
@@ -106,6 +124,7 @@ const PingPongForm = () => {
             <NavBar />
 
             <StyledForm>
+                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                 <StyledFormGroup>
                     <StyledFormControl type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 </StyledFormGroup>
@@ -121,7 +140,14 @@ const PingPongForm = () => {
                     </Form.Group>
                 </StyledFormGroup>
                 <StyledFormGroup>
-                    <StyledFormControl type="number" placeholder="Ranking" value={ranking} onChange={(e) => setRanking(e.target.value)} />
+                    <StyledFormControl
+                        type="number"
+                        placeholder="Ranking"
+                        value={ranking}
+                        onChange={(e) => setRanking(e.target.value)}
+                        min={1}
+                        max={5}
+                    />
                 </StyledFormGroup>
 
                 <Form.Select value={style} onChange={(e) => setStyle(e.target.value)}>
@@ -178,4 +204,11 @@ const StyledFormControl = styled(Form.Control)`
 
 const StyledButton = styled(Button)`
   width: 100%;
+`;
+const ErrorMessage = styled.p`
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #f87272;
 `;

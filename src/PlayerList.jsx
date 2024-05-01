@@ -15,6 +15,7 @@ const PlayerList = () => {
     const getPlayers = async () => {
         try {
             const querySnapshot = await getDocs(collection(db, 'Players'));
+
             const playersList = [];
             querySnapshot.forEach((doc) => {
                 playersList.push({ id: doc.id, ...doc.data() });
@@ -47,7 +48,7 @@ const PlayerList = () => {
         <PlayerListContainer>
             <NavBar />
 
-            <h1 style={{ marginTop: '8%' }}>Bienvenue, Cher Admin</h1>
+            <h1 style={{ marginTop: '8%', textAlign: 'center' }}>Bienvenue, Cher Admin</h1>
 
             <Section>
                 <h2>Liste des Pongistes</h2>
@@ -109,6 +110,8 @@ const Section = styled.div`
 
 const PlayerListContainer = styled.div`
     padding: 20px;
+    
+    
 `;
 
 const StyledTable = styled(Table)`
