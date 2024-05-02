@@ -67,7 +67,7 @@ const PingPongForm = () => {
             });
             console.log("Document added with ID: ", docRef.id);
             window.location.reload();
-            navigate('/content');
+            navigate('/admin');
 
         } catch (error) {
             console.error('Error adding document: ', error);
