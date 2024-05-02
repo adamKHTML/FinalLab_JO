@@ -16,6 +16,8 @@
     "@mui/icons-material": "^5.15.16",
     "@mui/material": "^5.15.16",
     "@splinetool/runtime": "^1.1.2",
+    "@vercel/blob": "^0.23.2",
+    "axios": "^1.6.8",
     "bootstrap": "^4.6.2",
     "firebase": "^10.11.0",
     "primeicons": "^7.0.0",

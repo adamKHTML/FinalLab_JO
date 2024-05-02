@@ -10,6 +10,7 @@ const Dashboard = () => {
 
     const [imageUrl, setImageUrl] = useState('/img/Story.svg');
     const [text, setText] = useState('');
+    const videoUrl = 'https://edossxvdo9gbzkuq.public.blob.vercel-storage.com/PingPong-bEJ5ka476QXeuYbexk7FEdTaa6PKIm.mp4';
 
     //Tentative pour changer l'image de fond de Backgroundlebrun 
 
@@ -34,7 +35,7 @@ const Dashboard = () => {
 
 
             <GlobalStyle />
-            <Video autoPlay muted loop id="bg-video" src="./video/PingPong.mp4" type="video/mp4" />
+            <Video autoPlay muted loop id="bg-video" src={videoUrl} type="video/mp4" />
             <Header />
             <Homepage>
                 <CarouselBackground imageUrl={imageUrl}>
