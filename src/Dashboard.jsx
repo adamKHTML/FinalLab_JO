@@ -10,7 +10,7 @@ const Dashboard = () => {
 
     const [imageUrl, setImageUrl] = useState('/img/Story.svg');
     const [text, setText] = useState('');
-    const videoUrl = 'https://edossxvdo9gbzkuq.public.blob.vercel-storage.com/PingPong-bEJ5ka476QXeuYbexk7FEdTaa6PKIm.mp4';
+    const videoUrl = 'https://youtube';
 
     //Tentative pour changer l'image de fond de Backgroundlebrun 
 
