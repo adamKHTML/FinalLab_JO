@@ -52,7 +52,7 @@ const PlayerList = () => {
 
             <Section>
                 <h2>Liste des Pongistes</h2>
-                <Link to="/content">
+                <Link to="/add">
                     <button type="button" className="btn btn-dark">
                         Ajouter
                     </button>
