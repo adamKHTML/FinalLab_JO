@@ -29,7 +29,7 @@ function App() {
           element={<Summary />}
         />
         <Route
-          path="/content"
+          path="/add"
           element={<FormContent />}
         />
         <Route
