@@ -18,7 +18,7 @@ const RGPDPage = () => {
                         <Checkbox type="checkbox" checked={accepted} onChange={handleAcceptance} />
                         Politique de Confidentialité et Conformité au RGPD
 
-                        Cette Politique de Confidentialité décrit comment [Nom de l'entreprise] collecte, utilise et protège les informations personnelles que vous nous fournissez lorsque vous utilisez notre site web.
+                        Cette Politique de Confidentialité décrit comment Swair Inc. collecte, utilise et protège les informations personnelles que vous nous fournissez lorsque vous utilisez notre site web.
 
                         Collecte d'Informations Personnelles
 
@@ -34,7 +34,7 @@ const RGPDPage = () => {
 
                         Droits des Utilisateurs
 
-                        Conformément au Règlement Général sur la Protection des Données (RGPD), vous avez le droit d'accéder à vos informations personnelles, de les rectifier, de les supprimer ou de vous opposer à leur traitement. Pour exercer ces droits, veuillez nous contacter à [adresse e-mail].
+                        Conformément au Règlement Général sur la Protection des Données (RGPD), vous avez le droit d'accéder à vos informations personnelles, de les rectifier, de les supprimer ou de vous opposer à leur traitement. Pour exercer ces droits, veuillez nous contacter à konateadam265@gmail.com.
 
                         Consentement
 
