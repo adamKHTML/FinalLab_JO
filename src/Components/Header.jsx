@@ -7,6 +7,12 @@ const Header = () => {
         <HeaderContainer>
 
             <HeaderContent>
+                <Link to="/rgpd" style={{ fontFamily: 'Lunch time, sans-serif' }}>
+
+
+                    RGPD
+
+                </Link>
                 <div className="link-btg">
                     <SocialLinks className="flex items-center space-x-4">
                         <Link to="/formulaire" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -23,7 +29,7 @@ const Header = () => {
                     </div>
                 </div>
             </HeaderContent>
-        </HeaderContainer>
+        </HeaderContainer >
     )
 }
 

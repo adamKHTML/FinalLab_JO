@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FormContent from './Components/FormContent';
 import PlayerList from './PlayerList';
 import UpdateContent from './Components/UpdateContent';
+import RGPDPage from './Rgpd';
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
         <Route
           path="/update/:id"
           element={<UpdateContent />}
+        />
+        <Route
+          path="/rgpd"
+          element={<RGPDPage />}
         />
       </Routes>
     </Router>
